@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
+const generateAccount = require('../utils/generateAccount');
 
 const User = db.define('users', {
   id: {
@@ -13,13 +14,10 @@ const User = db.define('users', {
     allowNull: false,
   },
   accountNumber: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-    defaultValue: function generateAccountNumber() {
-      const randomNumber = Math.floor(Math.random() * 999999) + 1;
-      return randomNumber.toString().padStart(6, '0');
-    },
+    defaultValue: generateAccount,
   },
   password: {
     type: DataTypes.STRING,
