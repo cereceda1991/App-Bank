@@ -1,0 +1,38 @@
+
+PRIMERA VERSION DE LA FUNCIÓN ENVIAR TRANFERENCIAS
+// exports.sendTransfer = async (req, res) => {
+//   const { amount, senderAccount, receiverAccount } = req.body;
+
+//   const userSender = await User.findOne({
+//     where: {
+//       accountNumber: senderAccount,
+//     },
+//   });
+
+//   const userReceiver = await User.findOne({
+//     where: {
+//       accountNumber: receiverAccount,
+//     },
+//   });
+
+//   await User.update(
+//     { amount: userReceiver.amount + amount },
+//     { where: { id: userReceiver.id } }
+//   );
+
+//   await User.update(
+//     { amount: userSender.amount - amount },
+//     { where: { id: userSender.id } }
+//   );
+
+//   await Transfer.create({
+//     amount,
+//     senderUserId: userSender.id,
+//     receiverUserId: userReceiver.id,
+//   });
+
+//   res.status(200).json({
+//     status: 'Success',
+//     message: 'Transferencia realizada exitosamente',
+//   });
+// };

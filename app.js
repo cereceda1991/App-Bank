@@ -19,6 +19,7 @@ const app = express();
 app.use(express.json());
 
 // Configuramos el middleware CORS para permitir solicitudes desde http://localhost:5173.
+//Con esto podemos usar cualquiera de los endpoint desde el frontend
 
 app.use(cors({ origin: 'http://localhost:5173' }));
 
