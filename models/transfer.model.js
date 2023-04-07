@@ -1,26 +1,24 @@
-const { DataTypes } = require('sequelize'); // importamos DataTypes de sequelize
-const { db } = require('../database/config'); // importamos la configuración de la base de datos
+const { DataTypes } = require('sequelize');
+const { db } = require('../database/config');
 
-// Definición del modelo de la tabla 'transfers' en la base de datos
 const Transfer = db.define('transfers', {
   id: {
-    primaryKey: true, // Clave primaria
-    type: DataTypes.INTEGER, // Tipo de dato: número entero
-    autoIncrement: true, // Se incrementa automáticamente con cada nuevo registro
-    allowNull: false, // No se permite el valor nulo
+    primaryKey: true,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
   },
   amount: {
-    type: DataTypes.INTEGER, // Tipo de dato: número entero
-    allowNull: false, // No se permite el valor nulo
+    type: DataTypes.INTEGER,
   },
   senderUserId: {
-    type: DataTypes.INTEGER, // Tipo de dato: número entero
-    allowNull: false, // No se permite el valor nulo
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
   receiverUserId: {
-    type: DataTypes.INTEGER, // Tipo de dato: número entero
-    allowNull: false, // No se permite el valor nulo
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
 });
 
-module.exports = Transfer; // Exportar el modelo para su uso en otras partes de la aplicación
+module.exports = Transfer;
