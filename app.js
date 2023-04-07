@@ -1,32 +1,33 @@
-// Importamos el paquete Express, que es un framework web para Node.js.
-
 const express = require('express');
 
-// Importamos el paquete CORS, que es un middleware para Express que permite la comunicación entre distintos dominios.
+const morgan = require('morgan');
+
 const cors = require('cors');
 
-// Importamos los módulos que contienen las rutas relacionadas con los usuarios y las transferencias.
+const AppError = require('./utils/app.Error');
+const globalErrorHandler = require('./controllers/error.controller');
 
 const usersRouter = require('./routes/users.routes');
 const transferRouter = require('./routes/transfers.routes');
 
-// Inicializamos una nueva aplicación Express.
-
 const app = express();
 
-// Utilizamos el middleware express.json() para parsear las solicitudes HTTP con formato JSON.
-
 app.use(express.json());
+app.use(cors());
 
-// Configuramos el middleware CORS para permitir solicitudes desde http://localhost:5173.
-//Con esto podemos usar cualquiera de los endpoint desde el frontend
-
-app.use(cors({ origin: 'http://localhost:5173' }));
-
-// Utilizamos las rutas importadas y les asignamos una URL base.
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/transfers', transferRouter);
 
-// Exportamos la aplicación Express para que pueda ser utilizada en otros módulos.
+app.all('*', (req, res, next) => {
+  return next(
+    new AppError(`Cannot find ${req.originalUrl} on this server!`, 404)
+  );
+});
+
+app.use(globalErrorHandler);
+
 module.exports = app;

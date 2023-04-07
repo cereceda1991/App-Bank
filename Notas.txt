@@ -31,7 +31,7 @@ PRIMERA VERSION DE LA FUNCIÓN ENVIAR TRANFERENCIAS
 //     receiverUserId: userReceiver.id,
 //   });
 
-//   res.status(200).json({
+//   res.status(201).json({
 //     status: 'Success',
 //     message: 'Transferencia realizada exitosamente',
 //   });

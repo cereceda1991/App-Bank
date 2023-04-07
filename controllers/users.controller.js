@@ -1,11 +1,11 @@
-const { Op } = require('sequelize'); //Importamos el Operador "OR" de Sequelize
+const { Op } = require('sequelize');
 
-const User = require('../models/users.model'); // Importación del modelo de usuarios
+const User = require('../models/users.model');
 
-const Transfer = require('../models/transfer.model'); // Importación del modelo de transferencias
+const Transfer = require('../models/transfer.model');
+const catchAsync = require('../utils/catchasync');
 
-// Creamos una función para registrar un nuevo usuario
-exports.register = async (req, res, next) => {
+exports.register = catchAsync(async (req, res, next) => {
   const { name, password } = req.body;
 
   // Crea un nuevo usuario en la base de datos
@@ -19,10 +19,9 @@ exports.register = async (req, res, next) => {
     status: 'success',
     message: 'The user has been created succesfully!',
   });
-};
+});
 
-// Creamos un función para autenticar un usuario y permitirle iniciar sesión
-exports.login = async (req, res, next) => {
+exports.login = catchAsync(async (req, res, next) => {
   const { accountNumber, password } = req.body;
 
   // Busca el usuario en la base de datos por su número de cuenta y contraseña
@@ -47,10 +46,9 @@ exports.login = async (req, res, next) => {
     message: `Login successfully 🤞`,
     user,
   });
-};
+});
 
-//Creamos una función para buscar un usuario y su historial de transferencias por su id
-exports.findById = async (req, res) => {
+exports.findById = catchAsync(async (req, res) => {
   const { id } = req.params;
 
   // Busca el usuario en la base de datos por su Id
@@ -90,10 +88,8 @@ exports.findById = async (req, res) => {
     results: historyTransfer.length,
     historyTransfer,
   });
-};
-
-// Creamos una función que deshabilita a un usuario por su id
-exports.delete = async (req, res) => {
+});
+exports.delete = catchAsync(async (req, res) => {
   // Obtenemos el id del usuario a desactivar desde los parámetros de la solicitud (endpoint)
   const { id } = req.params;
 
@@ -120,4 +116,4 @@ exports.delete = async (req, res) => {
     status: 'success',
     message: 'User has been disabled',
   });
-};
+});
