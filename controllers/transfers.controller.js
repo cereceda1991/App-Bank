@@ -17,39 +17,10 @@ exports.sendTransfer = catchAsync(async (req, res) => {
     },
   });
 
-  if (!userSender) {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Account number does not exist',
-    });
-  }
+  const parseAmount = parseInt(amount);
 
-  if (!userReceiver) {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Destination account number not found',
-    });
-  }
-
-  if (userSender.accountNumber === userReceiver.accountNumber) {
-    return res.status(400).json({
-      status: 'Error',
-      message:
-        'The output account cannot be the same as the destination account',
-    });
-  }
-
-  if (userSender.amount < amount) {
-    return res.status(400).json({
-      status: 'error',
-      message: 'Insufficient balance',
-    });
-  }
-
-  await Promise.all([
-    userSender.update({ amount: userSender.amount - amount }),
-    userReceiver.update({ amount: userReceiver.amount + amount }),
-  ]);
+  await userSender.update({ amount: userSender.amount - parseAmount });
+  await userReceiver.update({ amount: userReceiver.amount + parseAmount });
 
   await Transfer.create({
     amount,
