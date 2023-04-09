@@ -15,14 +15,26 @@ const {
 
 const router = express.Router();
 
-router.post('/signup', createUserValidation, usersController.signup);
+router.post(
+  '/signup',
+  createUserValidation,
+  usersController.signup
+);
 router.post(
   '/login',
   loginUserValidation,
   handleLoginErrors,
   usersController.login
 );
-router.get('/:id/history', handleFindByIdErrors, usersController.findById);
-router.delete('/:id', handleDeleteErrors, usersController.delete);
+router.get(
+  '/:id/history',
+  handleFindByIdErrors,
+  usersController.findById
+);
+router.delete(
+  '/:id',
+  handleDeleteErrors,
+  usersController.delete
+);
 
 module.exports = router;

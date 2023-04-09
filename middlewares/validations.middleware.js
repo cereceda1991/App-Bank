@@ -1,4 +1,7 @@
-const { body, validationResult } = require('express-validator');
+const {
+  body,
+  validationResult,
+} = require('express-validator');
 
 const validFields = (req, res, next) => {
   const errors = validationResult(req);
@@ -12,28 +15,35 @@ const validFields = (req, res, next) => {
 
   next();
 };
-
 exports.createUserValidation = [
-  body('name').notEmpty().withMessage('El nombre no puede estar vacío'),
+  body('name')
+    .notEmpty()
+    .withMessage('Name cannot be empty'),
   body('password')
     .notEmpty()
-    .withMessage('La contraseña no puede estar vacía')
+    .withMessage('Password cannot be empty')
     .isLength({ min: 6 })
-    .withMessage('La contraseña debe tener al menos 6 caracteres'),
+    .withMessage(
+      'Password must be at least 6 characters long'
+    ),
   validFields,
 ];
 
 exports.loginUserValidation = [
   body('accountNumber')
     .notEmpty()
-    .withMessage('El número de cuenta no puede estar vacío')
+    .withMessage('Account number cannot be empty')
     .isLength({ min: 6 })
-    .withMessage('El número de cuenta debe tener al menos 6 caracteres'),
+    .withMessage(
+      'Account number must be at least 6 characters long'
+    ),
   body('password')
     .notEmpty()
-    .withMessage('La contraseña no puede estar vacía')
+    .withMessage('Password cannot be empty')
     .isLength({ min: 6 })
-    .withMessage('La contraseña debe tener al menos 6 caracteres'),
+    .withMessage(
+      'Password must be at least 6 characters long'
+    ),
   validFields,
 ];
 
@@ -43,18 +53,21 @@ exports.TransferValidation = [
     .withMessage('Amount cannot be empty')
     .isNumeric()
     .withMessage('Amount must be a number'),
-
   body('senderAccount')
     .notEmpty()
     .withMessage('Sender account cannot be empty')
     .isLength({ min: 6 })
-    .withMessage('Sender account must be at least 6 characters long'),
-
+    .withMessage(
+      'Sender account must be at least 6 characters long'
+    ),
   body('receiverAccount')
     .notEmpty()
-    .withMessage('Receiver account cannot be empty')
+    .withMessage(
+      'Receiver account cannot be empty'
+    )
     .isLength({ min: 6 })
-    .withMessage('Receiver account must be at least 6 characters long'),
-
+    .withMessage(
+      'Receiver account must be at least 6 characters long'
+    ),
   validFields,
 ];

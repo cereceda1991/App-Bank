@@ -1,35 +1,31 @@
-const User = require('../models/users.model');
 const Transfer = require('../models/transfer.model');
 const catchAsync = require('../utils/catchasync');
 
-exports.sendTransfer = catchAsync(async (req, res) => {
-  const { amount, senderAccount, receiverAccount } = req.body;
+exports.sendTransfer = catchAsync(
+  async (req, res) => {
+    const {
+      userSender,
+      userReceiver,
+      transferAmount,
+    } = req;
 
-  const userSender = await User.findOne({
-    where: {
-      accountNumber: senderAccount,
-    },
-  });
+    await userSender.update({
+      amount: userSender.amount - transferAmount,
+    });
+    await userReceiver.update({
+      amount:
+        userReceiver.amount + transferAmount,
+    });
 
-  const userReceiver = await User.findOne({
-    where: {
-      accountNumber: receiverAccount,
-    },
-  });
+    await Transfer.create({
+      amount: transferAmount,
+      senderUserId: userSender.id,
+      receiverUserId: userReceiver.id,
+    });
 
-  const parseAmount = parseInt(amount);
-
-  await userSender.update({ amount: userSender.amount - parseAmount });
-  await userReceiver.update({ amount: userReceiver.amount + parseAmount });
-
-  await Transfer.create({
-    amount,
-    senderUserId: userSender.id,
-    receiverUserId: userReceiver.id,
-  });
-
-  res.status(201).json({
-    status: 'Success',
-    message: 'Successful transfer',
-  });
-});
+    res.status(201).json({
+      status: 'Success',
+      message: 'Successful transfer',
+    });
+  }
+);
