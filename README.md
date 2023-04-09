@@ -35,12 +35,12 @@ La documentación completa de la API se encuentra disponible en este [enlace](ht
 
 ## Tecnologías utilizadas
 
-- ![Node.js icon](https://img.icons8.com/color/48/000000/nodejs.png) 
-- ![Express.js icon](https://img.icons8.com/color/48/000000/express.png) 
-- ![MySQL icon](https://img.icons8.com/color/48/000000/mysql.png) 
-- ![JavaScript icon](https://img.icons8.com/color/48/000000/javascript.png) 
-- ![morgan icon](https://img.icons8.com/color/48/000000/console.png) 
-- ![pg icon](https://img.icons8.com/color/48/000000/postgreesql.png) 
+![Node.js icon](https://img.icons8.com/color/48/000000/nodejs.png) 
+![Express.js icon](https://img.icons8.com/color/48/000000/express.png) 
+![MySQL icon](https://img.icons8.com/color/48/000000/mysql.png) 
+![JavaScript icon](https://img.icons8.com/color/48/000000/javascript.png) 
+![morgan icon](https://img.icons8.com/color/48/000000/console.png) 
+![pg icon](https://img.icons8.com/color/48/000000/postgreesql.png) 
 
 
 
