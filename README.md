@@ -35,10 +35,19 @@ La documentación completa de la API se encuentra disponible en este [enlace](ht
 
 ## Tecnologías utilizadas
 
-![Node.js icon](https://img.icons8.com/color/48/000000/nodejs.png)
-![Express.js icon](https://img.icons8.com/color/48/000000/express.png)
-![MySQL icon](https://img.icons8.com/color/48/000000/mysql.png)
-![JavaScript icon](https://img.icons8.com/color/48/000000/javascript.png)
+- ![Node.js icon](https://img.icons8.com/color/48/000000/nodejs.png) Node.js
+- ![Express.js icon](https://img.icons8.com/color/48/000000/express.png) Express.js
+- ![MySQL icon](https://img.icons8.com/color/48/000000/mysql.png) MySQL
+- ![JavaScript icon](https://img.icons8.com/color/48/000000/javascript.png) JavaScript
+- ![dotenv icon](https://img.icons8.com/color/48/000000/dotenv.png) dotenv
+- ![cors icon](https://img.icons8.com/color/48/000000/cors.png) cors
+- ![morgan icon](https://img.icons8.com/color/48/000000/console.png) morgan
+- ![nodemon icon](https://img.icons8.com/color/48/000000/nodemon.png) nodemon
+- ![pg icon](https://img.icons8.com/color/48/000000/postgreesql.png) pg
+- ![pg-hstore icon](https://img.icons8.com/color/48/000000/database-storage.png) pg-hstore
+- ![sequelize icon](https://img.icons8.com/color/48/000000/sequelize.png) sequelize
+- ![express-validator icon](https://img.icons8.com/color/48/000000/validate.png) express-validator
+
 
 ## Contribuciones
 
